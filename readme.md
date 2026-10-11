@@ -23,24 +23,21 @@ Each sweep, expressed in a line on `data.txt` consists of $n+1$ decimal numbers,
 Initially, any points outside of the sensor's measurement capabilities are discarded i.e. any measurements outside of $[20\text{mm}, 4000\text{mm}]$. 
 
 First, the coordinates of a detected point is calculated in the sensor's reference frame.
-$$ 
-\begin{cases}
-    x_i = d_i \cos(\theta_i)
-    \\
-    y_i = d_i \sin(\theta_i)
-\end{cases}
-\text{where } \theta_i = \theta_{min} + i\cdot\theta_{interval}
-$$
+
+$x_i = d_i \cos(\theta_i)$
+
+$y_i = d_i \sin(\theta_i)$
+
+$\text{where } \theta_i = \theta_{min} + i\cdot\theta_{interval}$
+
 
 Next, this is translated to the global reference frame.
-$$ 
-\begin{cases}
-    x_{i, global} = x_i + x_{corr} = d_i \cos(\theta_i) + x_{corr}
-    \\
-    y_{i, global} = y_i + y_{corr} = d_i \sin(\theta_i) + y_{corr} 
-\end{cases}
-\text{where } \theta_i = \theta_{min} + i\cdot\theta_{interval}
-$$
+
+$x_{i, global} = x_i + x_{corr} = d_i \cos(\theta_i) + x_{corr}$
+
+$y_{i, global} = y_i + y_{corr} = d_i \sin(\theta_i) + y_{corr} $
+
+$\text{where } \theta_i = \theta_{min} + i\cdot\theta_{interval}$
 
 Then, outliers are filtered out. Since the bounds of the field are known, any calculated points that fall out of these bounds can be discarded, since they may be a result of sensor noise or fall beyond the region of interest.
 
